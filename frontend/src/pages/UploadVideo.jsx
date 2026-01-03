@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
+import { API_URL } from '../config';
 
 export default function UploadVideo() {
   const [file, setFile] = useState(null);
@@ -26,7 +27,7 @@ export default function UploadVideo() {
     formData.append('title', title || 'Untitled Video');
 
     try {
-      await axios.post('/api/videos/upload', formData, {
+       await axios.post(`${API_URL}/api/videos/upload`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
         onUploadProgress: (progressEvent) => {
           const percent = Math.round((progressEvent.loaded * 100) / progressEvent.total);
@@ -56,7 +57,7 @@ export default function UploadVideo() {
           {/* Title & Subtitle */}
           <div>
            <h1 className="text-4xl font-black text-gray-900 mb-3">Upload Video</h1>
-    
+
           </div>
         </div>
 

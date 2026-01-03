@@ -3,6 +3,7 @@ import { useAuth } from '../context/AuthContext';
 import { useNavigate, Link } from 'react-router-dom';
 import { io } from 'socket.io-client';
 import axios from 'axios';
+import { API_URL } from '../config';
 
 export default function Dashboard() {
     const { user, videos, setVideos, logout } = useAuth();
@@ -11,7 +12,7 @@ export default function Dashboard() {
     const [socket, setSocket] = useState(null);
 
     useEffect(() => {
-        const newSocket = io('http://localhost:5000');
+        const newSocket = io(API_URL);
 
         newSocket.on('connect', () => console.log('✅ SOCKET CONNECTED'));
 
@@ -47,7 +48,7 @@ export default function Dashboard() {
     const fetchVideos = async () => {
         try {
             setLoading(true);
-            const response = await axios.get('/api/videos');
+             const response = await axios.get(`${API_URL}/api/videos`);
             setVideos(response.data);
         } catch (err) {
             console.error('Failed to fetch videos');

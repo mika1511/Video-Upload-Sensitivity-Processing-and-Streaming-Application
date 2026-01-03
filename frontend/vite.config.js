@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
+  base: '/', // Important for Render routing
   server: {
     port: 5174,
     proxy: {
@@ -12,7 +13,6 @@ export default defineConfig({
       }
     }
   },
-  // ✅ ADDED: Build config for Render
   build: {
     outDir: 'dist',
     sourcemap: true
