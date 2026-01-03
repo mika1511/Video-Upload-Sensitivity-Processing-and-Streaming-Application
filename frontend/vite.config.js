@@ -11,5 +11,10 @@ export default defineConfig({
         changeOrigin: true
       }
     }
+  },
+  // ✅ ADDED: Build config for Render
+  build: {
+    outDir: 'dist',
+    sourcemap: true
   }
 })
