@@ -4,10 +4,9 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import UploadVideo from './pages/UploadVideo';
-
 function ProtectedRoute({ children }) {
-  const { user, token } = useAuth();  // ✅ ADD token
-  return user || token ? children : <Navigate to="/login" />;  // ✅ Check both
+  const { user } = useAuth();
+  return user ? children : <Navigate to="/login" />;
 }
 
 
