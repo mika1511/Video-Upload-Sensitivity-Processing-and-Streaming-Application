@@ -6,9 +6,10 @@ import Dashboard from './pages/Dashboard';
 import UploadVideo from './pages/UploadVideo';
 
 function ProtectedRoute({ children }) {
-  const { user } = useAuth();
-  return user ? children : <Navigate to="/login" />;
+  const { user, token } = useAuth();  // ✅ ADD token
+  return user || token ? children : <Navigate to="/login" />;  // ✅ Check both
 }
+
 
 function AppContent() {
   return (
