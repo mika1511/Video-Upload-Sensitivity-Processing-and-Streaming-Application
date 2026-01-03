@@ -52,8 +52,9 @@ uploads/           - Video file storage
 ```
 
 
-```
 ### **🚀 Frontend SPA (`frontend/`)**
+
+```
 
 App.jsx            - React Router + ProtectedRoute
 pages/Login.jsx    - Login form → /api/auth/login
@@ -311,14 +312,27 @@ socket.on('connect', () => {
 
 **Processing Progress Event:**
 ```javascript
-socket.on('progress', (data) => {
-  console.log('Progress update:', data);
-  // data = {
-  //   videoId: "6958b696d403abadf919bc9b",
-  //   progress: 60,
-  //   status: "processing"
-  // }
-});
+ newSocket.on('progress', (data) => {
+            setVideos(prevVideos => {
+                const updatedVideos = prevVideos.map(video =>
+                    video._id === data.videoId
+                        ? { ...video, progress: data.progress, status: data.status }
+                        : video
+                );
+
+                if (!updatedVideos.find(v => v._id === data.videoId)) {
+                    updatedVideos.push({
+                        _id: data.videoId,
+                        progress: data.progress,
+                        status: data.status,
+                        title: 'Processing...',
+                        createdAt: new Date()
+                    });
+                }
+
+                return updatedVideos;
+            });
+        });
 ```
 
 **Progress Stages:**
