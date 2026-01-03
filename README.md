@@ -41,16 +41,13 @@ This platform allows users to securely upload videos, automatically analyze them
 ### **🎬 Backend API (`backend/`)**
 
 ```
-
-| File/Route | Purpose | Endpoint |
-|------------|---------|----------|
-| `server.js` | Express + Socket.io server | `/api/health` ✅ |
-| `routes/auth.js` | **User Authentication** | `POST /api/auth/login`<br>`POST /api/auth/register` |
-| `routes/videos.js` | **Video Management** | `POST /api/videos/upload`<br>`GET /api/videos`<br>`GET /api/videos/:id/stream` |
-| `models/User.js` | User schema (email, hash) | MongoDB collection |
-| `models/Video.js` | Video metadata + status | MongoDB collection |
-| `middleware/auth.js` | JWT token verification | `req.userId` |
-| `uploads/` | Physical video storage | Served via CDN |
+server.js          - Express + Socket.io server
+routes/auth.js     - POST /login, /register (JWT)
+routes/videos.js   - POST /upload, GET /videos, /:id/stream
+models/User.js     - MongoDB user schema
+models/Video.js    - Video metadata + status
+middleware/auth.js - JWT verification
+uploads/           - Video file storage
 
 ```
 
@@ -58,15 +55,12 @@ This platform allows users to securely upload videos, automatically analyze them
 ```
 ### **🚀 Frontend SPA (`frontend/`)**
 
-| File/Component | Purpose | Route |
-|----------------|---------|-------|
-| `App.jsx` | React Router + ProtectedRoute | `/login`, `/dashboard`, `/upload` |
-| `main.jsx` | Entry point + AuthProvider | App root |
-| `pages/Login.jsx` | Login form + axios auth | `/login` |
-| `pages/Register.jsx` | Registration form | `/register` |
-| `pages/Dashboard.jsx` | Video list + streaming | `/dashboard` |
-| `pages/UploadVideo.jsx` | Drag-drop video upload | `/upload` |
-| `context/AuthContext.jsx` | Global auth state + axios | Token persistence |
+App.jsx            - React Router + ProtectedRoute
+pages/Login.jsx    - Login form → /api/auth/login
+pages/Dashboard.jsx - Video list + streaming
+pages/UploadVideo.jsx - Drag-drop upload
+context/AuthContext.jsx - Global auth state
+vite.config.js     - Dev proxy setup
 
 ```
 
