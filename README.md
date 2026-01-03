@@ -57,6 +57,7 @@ uploads/           - Video file storage
 
 App.jsx            - React Router + ProtectedRoute
 pages/Login.jsx    - Login form → /api/auth/login
+pages/Register.jsx    - Register form → /api/auth/register
 pages/Dashboard.jsx - Video list + streaming
 pages/UploadVideo.jsx - Drag-drop upload
 context/AuthContext.jsx - Global auth state
