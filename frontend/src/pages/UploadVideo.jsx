@@ -35,7 +35,7 @@ export default function UploadVideo() {
         }
       });
       
-      const response = await axios.get('/api/videos');
+      const response = await axios.get(`${API_URL}/api/videos`);
       setVideos(response.data);
       
       navigate('/dashboard');
