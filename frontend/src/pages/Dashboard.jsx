@@ -184,7 +184,7 @@ export default function Dashboard() {
                                                     <video
                                                         controls
                                                         className="w-full h-full object-cover"
-                                                        src={`/api/videos/${video._id}/stream`}
+                                                       src={`${API_URL}/api/videos/${video._id}/stream`}
                                                     >
                                                         Your browser does not support video.
                                                     </video>
