@@ -1,8 +1,9 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), tailwindcss()],
   base: '/', // Important for Render routing
   server: {
     port: 5174,
@@ -15,6 +16,14 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
-    sourcemap: true
+    sourcemap: true,
+    emptyOutDir: true,
+    // Retry logic for Windows file locking issues
+    rollupOptions: {
+      output: {
+        // This helps avoid file locking issues
+        manualChunks: undefined
+      }
+    }
   }
 })

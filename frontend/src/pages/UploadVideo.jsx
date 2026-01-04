@@ -48,20 +48,20 @@ export default function UploadVideo() {
 
   return (
     <div className="min-h-screen flex items-center justify-center p-8 bg-gradient-to-br from-indigo-50 via-blue-50 to-purple-50">
-      {/* Main Card - Perfectly Centered */}
+     
       <div className="bg-white/80 backdrop-blur-sm p-10 rounded-3xl shadow-2xl w-full max-w-md border border-white/50 max-h-[90vh] overflow-y-auto">
         
-        {/* Header - Fixed Structure */}
+       
         <div className="text-center mb-12">
         
-          {/* Title & Subtitle */}
+          
           <div>
            <h1 className="text-4xl font-black text-gray-900 mb-3">Upload Video</h1>
 
           </div>
         </div>
 
-        {/* Back Link */}
+        
         <div className="mb-8 text-center">
           <Link 
             to="/dashboard" 
@@ -74,7 +74,6 @@ export default function UploadVideo() {
           </Link>
         </div>
 
-        {/* Error Alert */}
         {error && (
           <div className="bg-gradient-to-r from-rose-100 to-red-100 border-2 border-red-200 text-red-900 p-6 rounded-2xl mb-8 shadow-lg text-center">
             <div className="flex items-center justify-center gap-3">
@@ -86,9 +85,9 @@ export default function UploadVideo() {
           </div>
         )}
 
-        {/* Form - Perfect Spacing */}
+       
         <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Title Input */}
+         
           <div>
             <label className="block text-sm font-bold text-slate-800 mb-3">Video Title (Optional)</label>
             <input
@@ -101,7 +100,7 @@ export default function UploadVideo() {
             />
           </div>
 
-          {/* File Input */}
+          
           <div>
             <label className="block text-sm font-bold text-slate-800 mb-3">Video File</label>
             <div className="space-y-3">
@@ -138,7 +137,7 @@ export default function UploadVideo() {
             </div>
           </div>
 
-          {/* Upload Button */}
+         
           <button
             type="submit"
             disabled={uploading || !file}

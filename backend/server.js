@@ -8,7 +8,7 @@ require('dotenv').config();
 const app = express();
 const server = http.createServer(app);
 
-// ✅ Socket.IO with proper CORS
+//  Socket.IO
 const io = new Server(server, { 
   cors: { 
     origin: "*", 
@@ -18,7 +18,7 @@ const io = new Server(server, {
 });
 global.io = io;
 
-// ✅ CORS configuration
+// CORS
 app.use(cors({ 
   origin: "*", 
   credentials: true 
@@ -32,28 +32,28 @@ app.use('/uploads', express.static('uploads'));
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/videos', require('./routes/videos'));
 
-// ✅ Health check endpoint (useful for debugging)
+
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', message: 'Backend is running' });
 });
 
-// ✅ Root endpoint
+
 app.get('/', (req, res) => {
   res.json({ message: 'Video Processing API - Backend is running' });
 });
 
-// MongoDB connection
+
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('✅ MongoDB connected'))
   .catch(err => console.log('❌ MongoDB error:', err));
 
-// Socket.io connection
+
 io.on('connection', (socket) => {
   console.log('👤 User connected:', socket.id);
   socket.on('disconnect', () => console.log('👤 User disconnected:', socket.id));
 });
 
-// Start server
+
 const PORT = process.env.PORT || 5000;
 server.listen(PORT, '0.0.0.0', () => {
   console.log(`🚀 Server running on port ${PORT}`);

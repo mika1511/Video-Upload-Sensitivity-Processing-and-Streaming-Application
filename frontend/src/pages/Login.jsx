@@ -30,45 +30,30 @@ export default function Login() {
 
     return (
         <div className="min-h-screen flex items-center justify-center p-6 bg-gradient-to-br from-indigo-400 via-purple-400 to-pink-400">
-            {/* Animated Background Elements */}
-            <div className="absolute inset-0 overflow-hidden">
-                <div className="absolute -top-40 -right-40 w-80 h-80 bg-white/20 rounded-full blur-3xl animate-pulse"></div>
-                <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-white/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-            </div>
-
-            {/* Compact Centered Card */}
-            <div className="relative w-full max-w-sm bg-white/95 backdrop-blur-2xl p-8 rounded-3xl shadow-2xl border border-white/50">
+            <div className="relative w-full max-w-sm bg-white p-8 rounded-3xl shadow-2xl">
 
                 {/* Logo & Title */}
                 <div className="text-center mb-8">
-                    <h1 className="text-3xl font-black text-gray-900 mb-2 drop-shadow-sm">
+    
+                    <h1 className="text-4xl font-black text-gray-900 mb-2">
                         VideoHub
                     </h1>
                     <p className="text-sm text-slate-600 font-medium">Sign in to your account</p>
                 </div>
 
-                {/* error */}
+                {/* Error */}
                 {error && (
-                    <div style={{
-                        backgroundColor: '#fef2f2',
-                        color: '#dc2626',
-                        padding: '1rem',
-                        borderRadius: '0.75rem',
-                        marginBottom: '1.5rem',
-                        fontSize: '0.875rem'
-                    }}>
-                        <span style={{ fontWeight: '500' }}>{error}</span>
+                    <div className="bg-red-50 border-l-4 border-red-500 p-4 rounded-xl mb-6">
+                        <span className="text-sm font-semibold text-red-800">{error}</span>
                     </div>
                 )}
 
-
-
                 {/* Login Form */}
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <form onSubmit={handleSubmit} className="space-y-5">
                     {/* Email Input */}
                     <div>
                         <label className="block text-xs font-bold text-slate-800 uppercase tracking-wide mb-2">
-                            Email
+                            Email Address
                         </label>
                         <input
                             type="email"
@@ -77,7 +62,7 @@ export default function Login() {
                             placeholder="you@example.com"
                             required
                             disabled={loading}
-                            className="w-full px-4 py-3.5 bg-white/70 border-2 border-slate-200 rounded-xl focus:outline-none focus:ring-4 focus:ring-blue-400/30 focus:border-blue-400 text-base placeholder-slate-500 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-300 disabled:opacity-60 backdrop-blur-sm"
+                            className="w-full px-4 py-4 bg-white border-2 border-slate-200 rounded-xl focus:outline-none focus:ring-4 focus:ring-purple-400 focus:border-purple-400 text-base placeholder-slate-400 shadow-sm"
                         />
                     </div>
 
@@ -90,10 +75,10 @@ export default function Login() {
                             type="password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
-                            placeholder="••••••••"
+                            placeholder="Enter your password"
                             required
                             disabled={loading}
-                            className="w-full px-4 py-3.5 bg-white/70 border-2 border-slate-200 rounded-xl focus:outline-none focus:ring-4 focus:ring-blue-400/30 focus:border-blue-400 text-base placeholder-slate-500 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-300 disabled:opacity-60 backdrop-blur-sm"
+                            className="w-full px-4 py-4 bg-white border-2 border-slate-200 rounded-xl focus:outline-none focus:ring-4 focus:ring-purple-400 focus:border-purple-400 text-base placeholder-slate-400 shadow-sm"
                         />
                     </div>
 
@@ -101,18 +86,15 @@ export default function Login() {
                     <button
                         type="submit"
                         disabled={loading}
-                        className="group relative w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 px-6 rounded-2xl font-bold text-lg shadow-2xl hover:shadow-3xl hover:from-blue-700 hover:to-purple-700 transform hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 overflow-hidden"
+                        className="w-full bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white py-4 px-6 rounded-2xl font-bold text-lg shadow-xl hover:shadow-2xl hover:from-indigo-700 hover:via-purple-700 hover:to-pink-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 mt-6"
                     >
                         {loading ? (
                             <div className="flex items-center justify-center gap-2">
-                                <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                                <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
                                 <span>Signing in...</span>
                             </div>
                         ) : (
-                            <>
-                                <span>Sign In</span>
-                                <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent -skew-x-12 -translate-x-32 group-hover:translate-x-0 transition-transform duration-700" />
-                            </>
+                            <span>Sign In</span>
                         )}
                     </button>
                 </form>
@@ -123,7 +105,7 @@ export default function Login() {
                         Don't have an account?{" "}
                         <Link
                             to="/register"
-                            className="font-bold text-blue-600 hover:text-purple-600 transition-colors duration-200"
+                            className="font-bold text-indigo-600 hover:text-purple-600 transition-colors duration-200"
                         >
                             Create one
                         </Link>

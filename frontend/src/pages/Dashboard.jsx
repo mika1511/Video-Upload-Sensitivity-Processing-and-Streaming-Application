@@ -197,7 +197,7 @@ export default function Dashboard() {
                                         </div>
 
 
-                                        {/* Progress % + Date - CENTERED */}
+                                       
                                         <div className="flex flex-col items-center space-y-2 text-center">
                                             <span className="text-2xl font-black text-gray-900">
                                                 {video.progress || 0}%
